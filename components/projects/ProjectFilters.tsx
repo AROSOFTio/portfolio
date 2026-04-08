@@ -1,4 +1,6 @@
-import { cn } from '@utils/cn';
+'use client';
+
+import { cn } from '@/lib/utils';
 
 interface ProjectFiltersProps {
   categories: string[];
@@ -12,6 +14,7 @@ export default function ProjectFilters({ categories, selected, onSelect }: Proje
       {categories.map((cat) => (
         <button
           key={cat}
+          type="button"
           onClick={() => onSelect(cat)}
           className={cn(
             'px-3 py-1 rounded-full text-sm transition-colors',

@@ -1,4 +1,6 @@
-import { useState } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
 
 interface ProjectSearchProps {
@@ -8,6 +10,10 @@ interface ProjectSearchProps {
 
 export default function ProjectSearch({ value, onChange }: ProjectSearchProps) {
   const [local, setLocal] = useState(value);
+
+  useEffect(() => {
+    setLocal(value);
+  }, [value]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

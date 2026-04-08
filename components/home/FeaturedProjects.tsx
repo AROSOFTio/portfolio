@@ -1,3 +1,5 @@
+'use client';
+
 import { projects } from '@data/projects';
 import ProjectCard from '@components/projects/ProjectCard';
 import { motion } from 'framer-motion';

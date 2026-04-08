@@ -3,24 +3,19 @@ import Image from 'next/image';
 import { projects } from '@data/projects';
 import { Badge } from '@components/ui/Badge';
 import { Button } from '@components/ui/Button';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-export default function ProjectDetail({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
   return (
-    <motion.article
-      className="container mx-auto py-12"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <article className="container mx-auto py-12">
       <header className="mb-8">
         <h1 className="text-4xl font-bold text-primary mb-2">{project.name}</h1>
         <Badge intent={project.status.toLowerCase() as any} className="mb-4">
@@ -76,6 +71,6 @@ export default function ProjectDetail({ params }: { params: { slug: string } }) 
           <Button variant="ghost" className="w-full">← Back to Projects</Button>
         </Link>
       </div>
-    </motion.article>
+    </article>
   );
 }

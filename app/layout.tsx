@@ -2,7 +2,6 @@ import './globals.css';
 import { Inter, Outfit } from 'next/font/google';
 import Navbar from '@components/layout/Navbar';
 import Footer from '@components/layout/Footer';
-import MobileMenu from '@components/layout/MobileMenu';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
@@ -33,8 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}> 
       <body className="bg-background text-secondary min-h-screen flex flex-col">
         <Navbar />
-        <MobileMenu />
-        <main className="flex-1 container mx-auto px-4 py-8">
+        <main className="flex-1 container mx-auto px-4 pb-8 pt-24">
           {children}
         </main>
         <Footer />

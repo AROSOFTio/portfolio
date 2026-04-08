@@ -1,3 +1,5 @@
+'use client';
+
 import { techStack } from '@data/techStack';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
