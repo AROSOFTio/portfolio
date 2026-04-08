@@ -2,8 +2,25 @@
 
 import { services } from '@data/services';
 import { motion } from 'framer-motion';
-import { LucideIcon } from 'lucide-react';
 import Link from 'next/link';
+import {
+  CalendarCheck,
+  Cloud,
+  Code,
+  FileText,
+  LayoutDashboard,
+  Server,
+  type LucideIcon,
+} from 'lucide-react';
+
+const serviceIcons: Record<string, LucideIcon> = {
+  CalendarCheck,
+  Cloud,
+  Code,
+  FileInvoice: FileText,
+  LayoutDashboard,
+  Server,
+};
 
 export default function ServicesSection() {
   return (
@@ -20,21 +37,12 @@ export default function ServicesSection() {
           }}
         >
           {services.map((service) => (
-            <motion.div
+            <ServiceCard
               key={service.title}
-              className="bg-surface bg-opacity-80 backdrop-blur-md rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-shadow"
-              whileHover={{ y: -5 }}
-            >
-              <div className="flex justify-center mb-4 text-primary">
-                {/* Dynamically render Lucide icon */}
-                {(() => {
-                  const Icon = require('lucide-react')[service.icon] as typeof LucideIcon;
-                  return <Icon size={36} />;
-                })()}
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-primary">{service.title}</h3>
-              <p className="text-sm text-gray-300">{service.description}</p>
-            </motion.div>
+              title={service.title}
+              description={service.description}
+              icon={service.icon}
+            />
           ))}
         </motion.div>
         <div className="text-center mt-8">
@@ -44,5 +52,30 @@ export default function ServicesSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function ServiceCard({
+  title,
+  description,
+  icon,
+}: {
+  title: string;
+  description: string;
+  icon: string;
+}) {
+  const Icon = serviceIcons[icon] ?? FileText;
+
+  return (
+    <motion.div
+      className="bg-surface bg-opacity-80 backdrop-blur-md rounded-xl p-6 text-center shadow-lg hover:shadow-2xl transition-shadow"
+      whileHover={{ y: -5 }}
+    >
+      <div className="flex justify-center mb-4 text-primary">
+        <Icon size={36} />
+      </div>
+      <h3 className="text-xl font-semibold mb-2 text-primary">{title}</h3>
+      <p className="text-sm text-gray-300">{description}</p>
+    </motion.div>
   );
 }
