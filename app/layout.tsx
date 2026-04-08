@@ -1,7 +1,7 @@
 import './globals.css';
 import { Inter, Outfit } from 'next/font/google';
 import Navbar from '@components/layout/Navbar';
-import Footer from '@components/layout/Footer';
+import PortfolioFooter from '@components/layout/PortfolioFooter';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' });
@@ -29,13 +29,13 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable}`}> 
-      <body className="bg-background text-secondary min-h-screen flex flex-col">
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+      <body className="flex min-h-screen flex-col bg-background text-secondary">
         <Navbar />
-        <main className="flex-1 container mx-auto px-4 pb-8 pt-24">
+        <main className="mx-auto flex w-full max-w-[1180px] flex-1 px-4 pb-16 pt-32 md:px-6 md:pt-36">
           {children}
         </main>
-        <Footer />
+        <PortfolioFooter />
       </body>
     </html>
   );

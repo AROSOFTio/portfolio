@@ -1,23 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  @apply bg-background text-secondary font-sans antialiased;
-  min-height: 100%;
+html {
+  scroll-behavior: smooth;
 }
 
-/* Custom scrollbar for premium feel */
+body {
+  @apply min-h-screen bg-background font-sans text-secondary antialiased;
+  background-image:
+    radial-gradient(circle at top left, rgba(18, 179, 71, 0.08), transparent 30%),
+    radial-gradient(circle at top right, rgba(223, 243, 230, 0.95), transparent 26%);
+}
+
+a {
+  @apply transition-colors;
+}
+
+::selection {
+  background: #12b347;
+  color: #ffffff;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #1E293B;
+  background: #dae4d6;
 }
+
 ::-webkit-scrollbar-thumb {
-  background-color: #6366F1;
+  background-color: #12b347;
   border-radius: 4px;
 }

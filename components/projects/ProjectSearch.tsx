@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
 
 interface ProjectSearchProps {
@@ -9,29 +8,16 @@ interface ProjectSearchProps {
 }
 
 export default function ProjectSearch({ value, onChange }: ProjectSearchProps) {
-  const [local, setLocal] = useState(value);
-
-  useEffect(() => {
-    setLocal(value);
-  }, [value]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onChange(local);
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="flex items-center border border-gray-300 rounded-md overflow-hidden">
+    <label className="flex w-full items-center gap-3 rounded-full border border-line bg-background px-4 py-3 shadow-sm xl:max-w-xl">
+      <Search size={18} className="text-slate-400" />
       <input
         type="text"
-        placeholder="Search projects..."
-        className="px-3 py-2 w-48 focus:outline-none"
-        value={local}
-        onChange={(e) => setLocal(e.target.value)}
+        placeholder="Search portfolio projects, sectors, or outcomes"
+        className="w-full bg-transparent text-sm text-secondary outline-none placeholder:text-slate-400"
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
       />
-      <button type="submit" className="bg-primary text-white p-2">
-        <Search size={18} />
-      </button>
-    </form>
+    </label>
   );
 }

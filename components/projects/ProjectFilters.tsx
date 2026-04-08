@@ -10,15 +10,17 @@ interface ProjectFiltersProps {
 
 export default function ProjectFilters({ categories, selected, onSelect }: ProjectFiltersProps) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-3">
       {categories.map((cat) => (
         <button
           key={cat}
           type="button"
           onClick={() => onSelect(cat)}
           className={cn(
-            'px-3 py-1 rounded-full text-sm transition-colors',
-            selected === cat ? 'bg-primary text-white' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'
+            'rounded-full border px-4 py-2 text-sm font-medium transition-colors',
+            selected === cat
+              ? 'border-primary bg-primary text-white shadow-soft'
+              : 'border-line bg-white text-slate-600 hover:border-primary/40 hover:text-primary'
           )}
         >
           {cat}

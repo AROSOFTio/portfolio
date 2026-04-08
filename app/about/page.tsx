@@ -1,8 +1,9 @@
-'use client';
-
-import { motion } from 'framer-motion';
+import AboutContent from '@components/portfolio/AboutContent';
 
 export default function AboutPage(){
+  return <AboutContent />;
+  /*
+
   return(
     <motion.section
       className="container mx-auto py-12"
@@ -28,4 +29,5 @@ export default function AboutPage(){
       </ul>
     </motion.section>
   );
+  */
 }

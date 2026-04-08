@@ -1,23 +1,21 @@
-import HeroSection from '@components/home/HeroSection';
-import AboutSummary from '@components/home/AboutSummary';
-import FeaturedProjects from '@components/home/FeaturedProjects';
-import ServicesSection from '@components/home/ServicesSection';
-import TechStack from '@components/home/TechStack';
-import WhyChooseUs from '@components/home/WhyChooseUs';
-import ProcessSection from '@components/home/ProcessSection';
-import ContactCTA from '@components/home/ContactCTA';
+import Hero from '@components/portfolio/Hero';
+import Overview from '@components/portfolio/Overview';
+import FeaturedProjects from '@components/portfolio/FeaturedProjects';
+import Services from '@components/portfolio/Services';
+import CapabilityGrid from '@components/portfolio/CapabilityGrid';
+import Process from '@components/portfolio/Process';
+import Cta from '@components/portfolio/Cta';
 
 export default function HomePage() {
   return (
-    <>
-      <HeroSection />
-      <AboutSummary />
+    <div className="space-y-8">
+      <Hero />
+      <Overview />
       <FeaturedProjects />
-      <ServicesSection />
-      <TechStack />
-      <WhyChooseUs />
-      <ProcessSection />
-      <ContactCTA />
-    </>
+      <Services />
+      <CapabilityGrid />
+      <Process />
+      <Cta />
+    </div>
   );
 }

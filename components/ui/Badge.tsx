@@ -2,13 +2,13 @@ import { forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
 const baseBadgeStyles =
-  'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset';
+  'inline-flex items-center rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ring-1 ring-inset';
 
 const badgeVariants = {
-  live: 'bg-green-100 text-green-800 ring-green-200',
-  demo: 'bg-blue-100 text-blue-800 ring-blue-200',
-  'in development': 'bg-yellow-100 text-yellow-800 ring-yellow-200',
-  completed: 'bg-gray-100 text-gray-800 ring-gray-200',
+  live: 'bg-emerald-100 text-emerald-700 ring-emerald-200',
+  demo: 'bg-sky-100 text-sky-700 ring-sky-200',
+  'in development': 'bg-amber-100 text-amber-700 ring-amber-200',
+  completed: 'bg-slate-100 text-slate-700 ring-slate-200',
 } as const;
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {

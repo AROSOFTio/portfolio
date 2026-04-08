@@ -1,18 +1,21 @@
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
 import { projects } from '@data/projects';
-import { Badge } from '@components/ui/Badge';
-import { Button } from '@components/ui/Button';
-import Link from 'next/link';
+import ProjectDetailView from '@components/portfolio/ProjectDetailView';
 
 export async function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 export default async function ProjectDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
-  if (!project) notFound();
+  const project = projects.find((entry) => entry.slug === slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  return <ProjectDetailView project={project} />;
+  /*
 
   return (
     <article className="container mx-auto py-12">
@@ -24,7 +27,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         <p className="text-lg text-gray-300">{project.fullDescription}</p>
       </header>
 
-      {/* Screenshot gallery */}
+      SCREENSHOT GALLERY
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         {project.screenshots.map((src, i) => (
           <div key={i} className="relative h-64 w-full rounded-lg overflow-hidden shadow-lg">
@@ -33,7 +36,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         ))}
       </section>
 
-      {/* Features & Tech */}
+      FEATURES AND TECH
       <section className="grid md:grid-cols-2 gap-8 mb-8">
         <div>
           <h2 className="text-2xl font-semibold text-primary mb-4">Key Features</h2>
@@ -55,7 +58,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
         </div>
       </section>
 
-      {/* CTA Buttons */}
+      CTA BUTTONS
       <div className="flex gap-4 mb-8">
         {project.liveUrl && (
           <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
@@ -73,4 +76,5 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
       </div>
     </article>
   );
+  */
 }
