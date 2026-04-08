@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: arosoft_portfolio
+    ports:
+      - '9000:9000'
+    restart: always
+    environment:
+      - NODE_ENV=production
+    # No volumes needed for production; static build is baked in image
