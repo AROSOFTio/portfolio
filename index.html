@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin Angella | Portfolio</title>
+    <!-- Premium UI Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/923b74a404.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">BA.</a>
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <div class="intro">
+                <span class="greeting">Hello, I'm</span>
+                <h1>Benjamin Angella</h1>
+
+                <div class="role-wrapper">
+                    <span class="static-prefix">A passionate</span>
+                    <div class="scrolling-words">
+                        <span>Full Stack Developer</span>
+                        <span>Systems Architect</span>
+                        <span>Software Engineer</span>
+                        <span>Tech Leader</span>
+                        <span>Full Stack Developer</span>
+                    </div>
+                </div>
+
+                <p class="description">
+                    Over 3+ years of proven experience in systems development and deployment.
+                    I build robust, scalable backends and craft highly interactive, premium frontend experiences.
+                </p>
+
+                <div class="actions">
+                    <a href="#" class="btn primary">Download CV</a>
+                    <div class="socials">
+                        <a href="#"><i class="fa-brands fa-github"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-image">
+            <div class="image-wrapper">
+                <!-- Clean, elegant spinning borders -->
+                <div class="spin-ring"></div>
+                <div class="spin-ring-rev"></div>
+                <!-- Perfectly circular image container -->
+                <div class="image-container">
+                    <img src="ben.png" alt="Benjamin Angella">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+        <div class="section-title">
+            <h2>Deployed Systems</h2>
+            <p>A selection of high-profile platforms and tools I've engineered.</p>
+        </div>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Rendered via external projects.js -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <p>Let's architect your next great idea.</p>
+        </div>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <div class="info-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h3>Email Address</h3>
+                    <p>CEO@arosoft.io</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-phone"></i>
+                    <h3>Phone Number</h3>
+                    <p>+256787726388</p>
+                </div>
+                <div class="info-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h3>Location</h3>
+                    <p>Kampala, Uganda</p>
+                </div>
+            </div>
+            
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sending simulation!');">
+                <div class="input-group">
+                    <input type="text" id="name" required placeholder=" ">
+                    <label for="name">Your Name</label>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" required placeholder=" ">
+                    <label for="email">Email Address</label>
+                </div>
+                <div class="input-group full-width">
+                    <input type="text" id="subject" required placeholder=" ">
+                    <label for="subject">Subject</label>
+                </div>
+                <div class="input-group full-width">
+                    <textarea id="message" rows="5" required placeholder=" "></textarea>
+                    <label for="message">Your Message</label>
+                </div>
+                <button type="submit" class="btn primary submit-btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <script src="projects.js"></script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const icon = themeToggle.querySelector('i');
+        
+        // Check for saved theme
+        if(localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            if(document.body.classList.contains('light-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
